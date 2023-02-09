@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class basePage extends baseTest {
+public class basePage {
 	WebDriver driver;
 	WebDriverWait wait;
 	Select select;
@@ -27,6 +27,10 @@ public class basePage extends baseTest {
 		this.driver = driver;
 	}
 
+	public void implicitTimeout(long ofMillis) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(ofMillis));
+	}
+	
 	/* Wait */
 	public WebElement waitForVisibleElement(String locator) {
 		wait = new WebDriverWait(driver, Duration.ofMillis(5000));
@@ -180,11 +184,16 @@ public class basePage extends baseTest {
 		return waitForVisibleElement(locator).isSelected();
 	}
 	
-
+	public boolean isElementNotInDOM(String locator) {
+		return waitForInvisibleElement(locator);
+	}
+	
+	
+	
 	
 	/* Popup */
 	
-	ádasdasd
+
 	
 	
 	
