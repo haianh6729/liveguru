@@ -3,11 +3,12 @@
 <suite name="Suite">
 	<parameter name="url" value="http://live.techpanda.org/" />
 	
-	
 	<test name="run chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="a.test" />
+			<class name="testcase.TC1_User_Register" />
+			<class name="testcase.TC2_User_Log_In" />
+			<class name="testcase.TC3_Verify_On_Mobile_Menu" />
 		</classes>
 	</test> <!-- Test -->
 	
