@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 public class PageGenerator {
+	
 	public static HomePage newHomePage(WebDriver driver) {
 		return new HomePage(driver);
 	}

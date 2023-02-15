@@ -34,8 +34,8 @@ public class TC1_User_Register extends BaseTest {
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String url) {
-		writeLog("Register - TC01 - Step 01: Open URL");
 		driver = getBrowserDriver(browserName, url);
+		writeLog("Register - TC01 - Step 01: Open URL");
 		homePage = PageGenerator.newHomePage(driver);
 	}
 
@@ -56,16 +56,22 @@ public class TC1_User_Register extends BaseTest {
 		registerPage.inputPassword(TestData.password);
 		registerPage.inputConfirmPassword(TestData.password);
 		myAccountPage = registerPage.clickOnRegisterButton();
+		writeLog("Register - TC01 - Step 05: Verify Register successful");
 		verifyTrue(myAccountPage.isSuccessfulRegister());
 
 	}
 
 	@Test
 	public void TC02_Verify_User_Infomation_After_Register() {
+		writeLog("Register - TC01 - Step 05: Open Account Information Link");
 		myAccountPage.openItemInMyAccountMenu("Account Information");
 		accountInforPage = PageGenerator.newAccountInforPage(driver);
+		writeLog("Register - TC01 - Step 06: Get Information and Verify infor");
+		writeLog("Register - TC01 - Check firstname");
 		verifyEqual(accountInforPage.getFirstname(), TestData.firstname);
+		writeLog("Register - TC01 - Check lastname");
 		verifyEqual(accountInforPage.getLastname(), TestData.lastname);
+		writeLog("Register - TC01 - Check password");
 		verifyEqual(accountInforPage.getEmail(), TestData.password);
 	}
 

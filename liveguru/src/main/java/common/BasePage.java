@@ -258,9 +258,9 @@ public class BasePage {
 		return PageGenerator.newMobilePage(driver);
 	}
 	
-	
-	/* Utilities 
-	 * */
+	/* 
+	 * Support functions
+	 */
 	public String toCapitalize(String string) {
 		string = string.toLowerCase();
 		String temp = "";

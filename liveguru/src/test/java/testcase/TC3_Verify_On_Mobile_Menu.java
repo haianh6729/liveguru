@@ -29,11 +29,6 @@ public class TC3_Verify_On_Mobile_Menu extends BaseTest {
 	MyAccountPage myAccountPage;
 	LogInPage logInPage;
 
-//	String email = "ha" + generateRandomNumber() + "@mail.com";
-//	String password = "111111";
-//	String firstname;
-//	String lastname;
-
 	AccountInformationPage accountInforPage;
 	MobilePage mobilePage;
 	String productName = "SONY XPERIA";
@@ -42,18 +37,22 @@ public class TC3_Verify_On_Mobile_Menu extends BaseTest {
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String url) {
-		writeLog("Login - TC01 - Step 01: Open URL");
+		writeLog("Verify Mobile Menu - TC01 - Step 01: Open URL");
 		driver = getBrowserDriver(browserName, url);
 		homePage = PageGenerator.newHomePage(driver);
+		writeLog("Verify Mobile Menu - TC01 - Set cookies and reload page");
 		setCookieAndReloadPage();
 	}
 
 	@Test
 	public void TC01_Verify_Cost_ListPage_And_DetailPage() {
+		writeLog("Verify Mobile Menu - TC01 - Step 02: Click Moblie Link");
 		mobilePage = homePage.clickMobileLink();
 		String mPrice = mobilePage.getProductPrice(productName);
+		writeLog("Verify Mobile Menu - TC01 - Step 03: Open Product in Detail");
 		productDetailPage = mobilePage.clickProductOnList(productName);
 		String pPrice = productDetailPage.getProductPrice(productName);
+		writeLog("Verify Mobile Menu - TC01 - Step 04: Compare price between List and Detail");
 		verifyEqual(mPrice, pPrice);
 		
 	}

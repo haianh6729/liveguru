@@ -56,8 +56,9 @@ public class TC2_User_Log_In extends BaseTest {
 		logInPage.inputPassword(TestData.password);
 		
 		myAccountPage = logInPage.clickOnLogInButton();
+		writeLog("LogIn - TC01 - Step 05: Verify Log In Successful");
 		verifyTrue(myAccountPage.isSuccessfulLogIn(TestData.firstname, TestData.firstname, TestData.lastname));
-		
+		writeLog("Get Cookies after Log on");
 		CookiesArchive.cookie = driver.manage().getCookies();
 	}
 

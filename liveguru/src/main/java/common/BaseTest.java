@@ -17,8 +17,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
 
 import resources.CookiesArchive;
+import utilities.VerificationFailures;
 import utilities.enumBrowser;
 
 public class BaseTest {
@@ -119,6 +121,11 @@ public class BaseTest {
 			writeLog("----------PASS---------");
 		} catch (Throwable e) {
 			writeLog("----------FAIL----------");
+			log.error("Exception : " + e.getMessage());
+			
+			/* Add exception to ReportNG */
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
 		}
 	}
 	
@@ -128,6 +135,10 @@ public class BaseTest {
 			writeLog("----------PASS---------");
 		} catch (Throwable e) {
 			writeLog("----------FAIL----------");
+			log.error("Exception : " + e.getMessage());
+			/* Add exception to ReportNG */
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
 		}
 	}
 	
@@ -136,7 +147,11 @@ public class BaseTest {
 			assertEquals(actual, expect);
 			writeLog("----------PASS---------");
 		} catch (Throwable e) {
-			writeLog("----------FAIL---------");
+			writeLog("----------FAIL----------");
+			log.error("Exception : " + e.getMessage());
+			/* Add exception to ReportNG */
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
 		}
 	}
 	
@@ -146,4 +161,14 @@ public class BaseTest {
 		return randNumber.nextInt(999);
 		
 	}
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+	
+	
+	
+	
+	
+	
 }
