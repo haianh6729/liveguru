@@ -2,7 +2,7 @@
 ============================
 
 
-### A typical top-level directory layout
+###  Top-level directory layout
 
     .                   
     ├── src                                              # source code files
@@ -46,9 +46,6 @@
 # Maven config file
 
     Set parameter and trigger automated test classes
-
-
-
 
 
 ### License information
