@@ -1,10 +1,11 @@
 
 ============================
 
+
 ### A typical top-level directory layout
 
     .                   
-    ├── src                                                     # source code files
+    ├── src                                              # source code files
     │    ├── main 
     │    │    └── java 
     │    │        ├── common                                                      
@@ -18,16 +19,27 @@
     │         └── java 
     │              └── testcase       
     │                             
-    ├── pom.xml                                                 # maven config file 
-    └── testng.xml                                              # run testng file
+    ├── pom.xml                                           # maven config file 
+    └── testng.xml                                        # run testng file
 
-> Use short lowercase names at least for the top-level files and folders except
-> `LICENSE`, `README.md`
+
 
 # Source code files
 
-    main : All Source code in project . Contain as Page Object Model
+    main : All Source code in project . Contain as Page Object Model.
     test : All automated test classes.
+
+# common
+    BaseTest and BasePage class, contain common methods. To support pageObjects (extends BasePage) and test class (extends BaseTest).
+
+# pageObjects
+    Contains pages of website as objects. Include method to manipulate on that page.
+
+# pageUIs
+    Define elements on the pages.
+
+# resource 
+    Test data and cookies
 # Maven config file
 
     Contain dependencies for maven project
